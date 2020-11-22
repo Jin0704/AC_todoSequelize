@@ -74,10 +74,11 @@ app.post('/todos/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.delete('/todos/:id/delete', (req, res) => {
+app.delete('/todos/:id', (req, res) => {
+  const UserId = req.user.id
   const id = req.params.id
-  return Todo.findByPk(id)
-    .then(todo => todo.remove())
+  return Todo.findOne({ where: { id, UserId } })
+    .then(todo => todo.destroy())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
