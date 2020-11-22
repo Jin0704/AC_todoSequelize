@@ -1,4 +1,4 @@
-# Movie List
+# Todo List Sequelize
 A simple web application for todolist
 
 ## Features
